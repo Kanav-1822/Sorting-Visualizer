@@ -22,9 +22,13 @@ A **web-based Sorting Visualizer** built with **React.js** (frontend) and **Node
 ```bash
 git clone https://github.com/your-username/sorting-visualizer.git
 cd sorting-visualizer
+```
 2️⃣ Install dependencies:
+```
 npm install
+```
 3️⃣ Start the Project:
+```
 npm start
 ```
 🖥️ Usage
