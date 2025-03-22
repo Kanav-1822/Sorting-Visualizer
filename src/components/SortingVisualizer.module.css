@@ -1,0 +1,279 @@
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+.button {
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.button:disabled {
+    background: #d6d6d6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Select Dropdown Styling */
+.select {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 2px solid #ced4da;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.select:hover {
+    border-color: #007bff;
+}
+
+.select:disabled {
+    background: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Sorting Visualizer Container */
+.sortingVisualizer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to bottom, #f5f7fa, #e4e7eb);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Algorithm Title */
+.algoTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Array Container */
+.arrayContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5px;
+    height: 450px;
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Legend Container */
+.legend {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 0.8rem;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legendColor {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    margin-right: 8px;
+}
+/* Update the cell base and state colors to exactly match the legend */
+
+/* Base cell style */
+.cell {
+    /* background: linear-gradient(to top, #3498db, #2980b9); */
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+    font-weight: bold;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin: 0 2px;
+}
+
+/* State-based colors with higher specificity */
+.cell.current,
+.cell.checking {
+    background: linear-gradient(to top, #f39c12, #e67e22) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+.cell.min {
+    background: linear-gradient(to top, #e74c3c, #c0392b) !important;
+    transform: translateY(-3px);
+    animation: pulse 1s infinite alternate;
+}
+
+.cell.swap-first,
+.cell.swap-second {
+    background: linear-gradient(to top, #9b59b6, #8e44ad) !important;
+    transform: translateY(-8px);
+    z-index: 10;
+}
+
+.cell.moving {
+    background: linear-gradient(to top, #1abc9c, #16a085) !important;
+    transform: translateY(-8px) scale(1.05);
+    z-index: 15;
+}
+
+.cell.pivot {
+    background: linear-gradient(to top, #34495e, #2c3e50) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(52, 73, 94, 0.7);
+    z-index: 20;
+}
+
+.cell.done {
+    background: linear-gradient(to top, #2ecc71, #27ae60) !important;
+    animation: confirm 0.5s ease;
+}
+
+/* Element with value being tracked */
+.cell.tracked {
+    position: relative;
+}
+
+.cell.tracked::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #e74c3c;
+}
+
+/* Out of place element */
+.cell.out-of-place {
+    background: linear-gradient(to top, #95a5a6, #7f8c8d);
+    opacity: 0.8;
+}
+
+/* Highlight effect for special operations */
+.cell.highlight {
+    animation: glow 0.8s ease;
+}
+
+/* Animations for visual effects */
+@keyframes pulse {
+    0% { transform: translateY(-3px); }
+    100% { transform: translateY(-7px); }
+}
+
+@keyframes softPulse {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+@keyframes moveLeft {
+    0% { transform: translateX(0) translateY(-5px); }
+    50% { transform: translateX(-20px) translateY(-8px); }
+    100% { transform: translateX(0) translateY(-8px); }
+}
+
+@keyframes moveRight {
+    0% { transform: translateX(0) translateY(-5px); }
+    50% { transform: translateX(20px) translateY(-8px); }
+    100% { transform: translateX(0) translateY(-8px); }
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(20px) scale(1.05); opacity: 0.5; }
+    100% { transform: translateY(-8px) scale(1.05); opacity: 1; }
+}
+
+@keyframes flash {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.5); }
+    100% { filter: brightness(1); }
+}
+
+@keyframes confirm {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button, .select {
+        width: 100%;
+    }
+    
+    .arrayContainer {
+        height: 300px;
+    }
+    
+    .cell {
+        width: 25px !important;
+        font-size: 0.8rem;
+    }
+    
+    .legend {
+        position: static;
+        margin-top: 10px;
+        width: 100%;
+    }
+}
